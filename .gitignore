@@ -1,0 +1,3 @@
+bin/*
+!bin/.gitkeep
+variables.auto.pkvars.hcl
