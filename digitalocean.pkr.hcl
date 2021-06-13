@@ -22,7 +22,7 @@ build {
   ]
 
   provisioner "file" {
-    source = "bin"
+    source = "./bin/"
     destination = "/tmp"
   }
 
