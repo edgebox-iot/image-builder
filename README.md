@@ -15,7 +15,7 @@ Building ready to use images of Edgebox for Cloud Environments
 3. Choose which image you want to build. Currently available:
    - DigitalOcean (`digitalocean`) 
    - _TODO:_ VirtualBox (`virtualbox`)
-4. Create the `variables.auto.pkvars.hcl` file and insert any necessary variables to build your images (See `image variables ` below).
+4. Create the `variables.auto.pkr.hcl` file and insert any necessary variables to build your images (See `image variables ` below).
 5. Run `packer build [image_name].pkr.hcl`
 
 ## Image Variables
