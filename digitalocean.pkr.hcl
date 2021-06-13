@@ -13,6 +13,7 @@ source "digitalocean" "ubuntu" {
   region =  "fra1"
   size =  "s-1vcpu-1gb"
   ssh_username = "root"
+  ssh_password = "demo"
   snapshot_name = "edgebox-cloud-001-{{timestamp}}"
 }
 

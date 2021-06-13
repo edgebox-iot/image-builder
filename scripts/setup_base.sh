@@ -15,7 +15,7 @@ EOF
 install() {
     echo "Installing base dependencies"
     apt-get update
-    apt-get install -y -qq vim aptitude nano curl git libffi-dev libssl-dev python3 python3-pip samba samba-common-bin avahi-daemon avahi-utils tinc jq
+    apt-get install -y -qq vim aptitude nano curl git libffi-dev libssl-dev python3 python3-pip samba samba-common-bin avahi-daemon avahi-utils jq
     pip3 -V
     echo "Creating system user and setting defined password"
     useradd -m system
@@ -23,21 +23,20 @@ install() {
     echo "Installing Docker"
     curl -ksSL https://get.docker.com | sh
     echo "Installing Docker Compose"
-    sudo pip3 -v install docker-compose
+    pip3 -v install docker-compose
     echo "Installing yq"
-    sudo pip3 -v install yq
+    pip3 -v install yq
     echo "Installing Go"
-    export GOLANG="$(curl https://golang.org/dl/|grep armv6l|grep -v beta|head -1|awk -F\> {'print $3'}|awk -F\< {'print $1'})"
-    wget https://golang.org/dl/$GOLANG
-    sudo tar -C /usr/local -xzf $GOLANG
-    rm $GOLANG
-    unset GOLANG >> /home/system/.profile
+    wget https://golang.org/dl/go1.16.5.linux-amd64.tar.gz
+    tar -C /usr/local -xzf go1.16.5.linux-amd64.tar.gz
+    rm go1.16.5.linux-amd64.tar.gz
     echo "export PATH=\$PATH:/usr/local/go/bin" >> /home/system/.profile
     echo "Setting up components"
     mkdir /home/system/components
     cd /home/system/components
     mv /tmp/edgeboxctl ./edgeboxctl
-    mv ./edgeboxctl/edgeboxctl.service /lib/systemd/system/edgeboxctl.service
+    cp ./edgeboxctl/edgeboxctl.service /lib/systemd/system/edgeboxctl.service
+    cp ./edgeboxctl/edgeboxctl-linux-amd64 /usr/local/sbin/edgeboxctl
     mv /tmp/ws ./ws
     mv /tmp/api ./api
     mv /tmp/apps ./apps
@@ -46,9 +45,9 @@ install() {
     # docker-compose up -d
     chmod 757 ws
     mkdir appdata
-    sudo chmod -R 777 appdata/
+    chmod -R 777 appdata/
     ./ws -b
-    echo "Starting Revere Proxy and Service Containers"
+    echo "Starting Reverse Proxy and Service Containers"
     ./ws -s
 	echo "Starting Edgeboxctl"
 	sudo systemctl enable edgeboxctl
