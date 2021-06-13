@@ -28,7 +28,6 @@ build {
 
   provisioner "shell" {
     environment_vars = [
-      "VERSION=0.0.1",
       "SYSTEM_PW=${var.edgebox_system_pw}"
     ]
     scripts = [

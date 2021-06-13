@@ -13,6 +13,10 @@ EOF
 }
 
 install() {
+    echo "----> Installing base dependencies"
+    echo ""
+    sh -c DEBIAN_FRONTEND=noninteractive apt-get install -y -qq vim aptitude nano curl git libffi-dev libssl-dev python3 python3-pip samba samba-common-bin avahi-daemon avahi-utils tinc jq >/dev/null
+    echo ""
     echo "----> Creating system user and setting defined password:"
     echo ""
     useradd -m system
@@ -24,6 +28,7 @@ install() {
     echo ""
     echo "----> Installing Docker Compose:"
     echo ""
+    sh -c DEBIAN_FRONTEND=noninteractive apt-get install -y -qq pip3 >/dev/null
     sudo pip3 -v install docker-compose
     echo ""
     echo "----> Installing yq:"
