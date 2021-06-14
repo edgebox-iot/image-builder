@@ -37,7 +37,6 @@ install() {
     mv /tmp/edgeboxctl ./edgeboxctl
     cp ./edgeboxctl/edgeboxctl.service /lib/systemd/system/edgeboxctl.service
     cp ./edgeboxctl/edgeboxctl-linux-amd64 /usr/local/sbin/edgeboxctl
-    cp ./ws/ws.service /lib/systemd/system/ws.service
     mv /tmp/ws ./ws
     mv /tmp/api ./api
     mv /tmp/apps ./apps
@@ -53,8 +52,6 @@ install() {
     sudo systemctl daemon-reload
 	sudo systemctl enable edgeboxctl
 	sudo systemctl start edgeboxctl
-    echo "Starting WS"
-    sudo systemctl enable ws
     echo "Edgebox Setup Finished"
 }
 
