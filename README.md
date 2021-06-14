@@ -15,14 +15,14 @@ Building ready to use images of Edgebox for Cloud Environments
 3. Choose which image you want to build. Currently available:
    - DigitalOcean (`digitalocean`) 
    - _TODO:_ VirtualBox (`virtualbox`)
-4. Create the `variables.auto.pkr.hcl` file and insert any necessary variables to build your images (See `image variables ` below).
+4. Create the `variables.auto.pkr.hcl` file and insert any necessary variables to build your images (See `image variables ` below). An example file is included (`variables.auto.pkr.hcl.example`).
 5. Run `packer build [image_name].pkr.hcl`
 
 ## Image Variables
 
 Depending on the image being built, it may require variables that need to be provided beforehand. Here's a list of variables per type of image supported:
+- **All Images**
+  - `edgebox-system_pw` - The default password for the system user.
 
 - **DigitalOcean**
-  - `digitalocean-api_token` - The API token that can [be obtained in your DigitalOcean account](https://docs.digitalocean.com/reference/api/create-personal-access-token/). 
-
-
+  - `digitalocean-api_token` - The API token that can [be obtained in your DigitalOcean account](https://docs.digitalocean.com/reference/api/create-personal-access-token/).
