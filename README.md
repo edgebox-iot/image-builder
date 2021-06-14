@@ -13,10 +13,10 @@ Building ready to use images of Edgebox for Cloud Environments
    - [`edgebox-iot/apps`](https://github.com/edgebox-iot/apps/releases/latest)
 2. Copy each one to the `bin` folder of this project (it is git ignored).
 3. Choose which image you want to build. Currently available:
-   - DigitalOcean (`digitalocean`) 
+   - DigitalOcean (`digitalocean.ubuntu`) 
    - _TODO:_ VirtualBox (`virtualbox`)
-4. Create the `variables.auto.pkr.hcl` file and insert any necessary variables to build your images (See `image variables ` below). An example file is included (`variables.auto.pkr.hcl.example`).
-5. Run `packer build [image_name].pkr.hcl`
+4. Create the `variables.auto.pkrvars.hcl` file and insert any necessary variables to build your images (See `image variables ` below). The format is key = value.
+5. Run `packer build -only=[image] .` (or `packer build .` for all)
 
 ## Image Variables
 
