@@ -13,6 +13,8 @@ EOF
 }
 
 install() {
+    echo "Waiting 30 seconds for OS to settle..."
+    sleep 30
     echo "Installing base dependencies"
     apt-get update
     apt-get install -y -qq vim aptitude nano curl git libffi-dev libssl-dev python3 python3-pip samba samba-common-bin avahi-daemon avahi-utils jq
