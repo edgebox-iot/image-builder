@@ -1,4 +1,4 @@
-# cloud-image-builder
+# image-builder
 
 Building ready to use images of Edgebox for Cloud Environments
 
