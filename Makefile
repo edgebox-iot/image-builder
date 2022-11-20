@@ -10,10 +10,9 @@ digitalocean: setup
 vagrant: setup
 	packer init vagrant.pkr.hcl
 	packer build vagrant.pkr.hcl
-	echo 'Built vagrant'
 
 all: vagrant digitalocean
-	echo 'Finished'
+
 
 release: clean all
 
