@@ -1,7 +1,6 @@
 source "virtualbox-iso" "ubuntu-2004" {
   boot_command            = ["<enter><enter><f6><esc><wait> ", "autoinstall ds=nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/", "<enter>"]
   boot_wait               = "5s"
-  guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   guest_os_type           = "ubuntu-64"
   headless                = false
   http_directory          = "http"
