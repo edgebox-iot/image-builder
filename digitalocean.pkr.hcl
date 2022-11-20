@@ -32,7 +32,7 @@ build {
       "SYSTEM_PW=${var.edgebox_system_pw}"
     ]
     scripts = [
-      "scripts/setup_base.sh",
+      "scripts/packer/setup_base.sh",
     ]
   }
 }
