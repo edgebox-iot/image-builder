@@ -1,17 +1,24 @@
+.DEFAULT_GOAL := virtualbox
+
+
 setup:
 	./scripts/make/local_setup.sh
 
-digitalocean:
-	./scripts/make/digitalocean_setup.sh
+digitalocean: setup
+	packer init digitalocean.pkr.hcl
+	packer build digitalocean.pkr.hcl
 
-virtualbox:
-	./scripts/make/virtualbox_setup.sh
+virtualbox: setup
+	packer init virtualbox.pkr.hcl
+	packer build virtualbox.pkr.hcl
+		echo 'Built virtualbox'
 
-vagrant:
-	./scripts/make/vagrant_setup.sh
+all: virtualbox digitalocean
+	echo 'Finished'
 
-all:
-	./scripts/make/all_setup.sh
+release: clean all
 
 clean:
-	./scripts/make/clean.sh
+	rm -rf bin/*
+
+
