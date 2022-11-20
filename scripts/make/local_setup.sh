@@ -1,6 +1,11 @@
 # Clone the necessary repositories
 
-git clone --depth 1 git@github.com:edgebox-iot/edgeboxctl.git ./bin/edgeboxctl
-git clone --depth 1 git@github.com:edgebox-iot/ws.git ./bin/ws
-git clone --depth 1 git@github.com:edgebox-iot/api.git ./bin/api
-git clone --depth 1 git@github.com:edgebox-iot/apps.git ./bin/apps
+repos=(edgeboxctl ws api apps) 
+
+
+for repo in "${repos[@]}"
+do
+    if [[ ! -d ./bin/$repo ]]; then
+        git clone --depth 1 git@github.com:edgebox-iot/$repo.git ./bin/$repo
+    fi
+done
