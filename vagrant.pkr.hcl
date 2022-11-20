@@ -17,9 +17,4 @@ build {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -S -E bash '{{ .Path }}'"
     script          = "scripts/packer/virtualbox_cleanup.sh"
   }
-
-  post-processor "vagrant" {
-    compression_level = "8"
-    output            = "output/ubuntu-20.04.box"
-  }
 }
