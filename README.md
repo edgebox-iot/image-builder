@@ -6,12 +6,7 @@ Building ready to use images of Edgebox for various environments
 
 ## Setup
 
-1. Download the latest releases of:
-   - [`edgebox-iot/edgeboxctl`](https://github.com/edgebox-iot/edgeboxctl/releases/latest)
-   - [`edgebox-iot/ws`](https://github.com/edgebox-iot/ws/releases/latest)
-   - [`edgebox-iot/api`](https://github.com/edgebox-iot/api/releases/latest)
-   - [`edgebox-iot/apps`](https://github.com/edgebox-iot/apps/releases/latest)
-2. Copy each one to the `bin` folder of this project (it is git ignored).
+1. run `make setup` to setup the required dependencies
 3. Choose which image you want to build. Currently available:
    - DigitalOcean (`digitalocean.ubuntu`) 
    - _TODO:_ VirtualBox (`virtualbox`)
