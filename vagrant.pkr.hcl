@@ -1,8 +1,8 @@
 source "vagrant" "ubuntu-2204" {
   communicator = "ssh"
-  source_path = "bento/ubuntu-22.04"
-  provider = "virtualbox"
-  add_force = true
+  source_path  = "bento/ubuntu-22.04"
+  provider     = "virtualbox"
+  add_force    = true
 }
 
 build {

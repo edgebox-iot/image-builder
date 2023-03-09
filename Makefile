@@ -3,6 +3,9 @@
 setup:
 	./scripts/make/local_setup.sh
 
+format: 
+	packer fmt .
+
 digitalocean: setup
 	packer init digitalocean.pkr.hcl
 	packer build digitalocean.pkr.hcl
