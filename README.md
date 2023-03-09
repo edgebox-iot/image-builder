@@ -9,14 +9,31 @@ Building ready to use images of Edgebox for various environments
 1. run `make setup` to setup the required dependencies
 2. Choose which image you want to build. Currently available images can be found in the `images` section below.
 3. Create the `variables.auto.pkrvars.hcl` file and insert any necessary variables to build your images (See `image variables` below). The format is `key="value"`.
-4. Run `packer build -only=[image] .` (or `packer build .` for all)
 
-## Images
+## Running
+
+### With Packer CLI
+
+- Run `packer build -only=[image] .` (or `packer build .` for all)
+
+#### Images
 
 The following images are currently supported, and can be built using the `packer build -only=[image] .` command:
 
 - DigitalOcean (`digitalocean.ubuntu`)
-- *WIP:* Vagrant (`vagrant.ubuntu-2204`)
+- Vagrant (`vagrant.ubuntu-2204`)
+
+### With Make
+
+- Run `make [target]` (or `make all` for all)
+
+#### Targets
+
+The following targets are available:
+
+- `all` - Builds all images
+- `digitalocean` - Builds the DigitalOcean image
+- `vagrant` - Builds the Vagrant image
 
 ## Image Variables
 
