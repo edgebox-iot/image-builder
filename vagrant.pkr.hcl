@@ -8,13 +8,10 @@ source "vagrant" "ubuntu-2204" {
 build {
   sources = ["source.vagrant.ubuntu-2204"]
 
-  provisioner "shell" {
-    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -S -E bash '{{ .Path }}'"
-    script          = "scripts/packer/virtualbox_init.sh"
-  }
-
-  provisioner "shell" {
-    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -S -E bash '{{ .Path }}'"
-    script          = "scripts/packer/virtualbox_cleanup.sh"
+  provisioner "ansible" {
+    playbook_file = "./scripts/ansible/playbook.yml"
+    ansible_ssh_extra_args = [
+        "-o IdentitiesOnly=yes -o PubkeyAcceptedAlgorithms=+ssh-rsa -o HostkeyAlgorithms=+ssh-rsa"
+    ]
   }
 }

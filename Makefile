@@ -2,6 +2,7 @@
 
 setup:
 	./scripts/make/local_setup.sh
+	ansible-galaxy install -r scripts/ansible/requirements.yml
 
 format: 
 	packer fmt .
