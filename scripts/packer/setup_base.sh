@@ -39,8 +39,9 @@ install() {
     mkdir /home/system/components
     cd /home/system/components
     mv /tmp/edgeboxctl ./edgeboxctl
+    cd edgeboxctl && make build-cloud && cd ..
     cp ./edgeboxctl/edgeboxctl.service /lib/systemd/system/edgeboxctl.service
-    cp ./edgeboxctl/edgeboxctl-linux-amd64 /usr/local/sbin/edgeboxctl
+    cp ./edgeboxctl/bin/edgeboxctl-linux-amd64 /usr/local/sbin/edgeboxctl
     mv /tmp/ws ./ws
     mv /tmp/api ./api
     mv /tmp/apps ./apps
