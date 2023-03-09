@@ -27,7 +27,9 @@ install() {
     echo "Installing Docker Compose"
     pip3 -v install docker-compose
     echo "Installing yq"
-    pip3 -v install yq
+    wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+    chmod a+x /usr/local/bin/yq
+    # pip3 -v install yq
     echo "Installing Go"
     wget https://golang.org/dl/go1.16.5.linux-amd64.tar.gz
     tar -C /usr/local -xzf go1.16.5.linux-amd64.tar.gz
