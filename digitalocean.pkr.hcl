@@ -8,12 +8,12 @@ packer {
 }
 
 source "digitalocean" "ubuntu" {
-  api_token = "${var.digitalocean_api_token}"
-  image = "ubuntu-20-04-x64"
-  region =  "fra1"
-  size =  "s-1vcpu-1gb"
-  ssh_username = "root"
-  ssh_password = "demo"
+  api_token     = "${var.digitalocean_api_token}"
+  image         = "ubuntu-20-04-x64"
+  region        = "fra1"
+  size          = "s-1vcpu-1gb"
+  ssh_username  = "root"
+  ssh_password  = "demo"
   snapshot_name = "edgebox-cloud-001-{{timestamp}}"
 }
 
@@ -23,7 +23,7 @@ build {
   ]
 
   provisioner "file" {
-    source = "./bin/"
+    source      = "./bin/"
     destination = "/tmp"
   }
 
