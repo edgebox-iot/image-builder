@@ -2,6 +2,8 @@
 - name: 'Provision Image'
   hosts: 'all'
   become: true
+  gather_facts: true
+
 
   tasks:
     - name : Install dev dependencies
@@ -10,7 +12,11 @@
         - vim
         - nano
         - jq
-        - yq
+
+    - name: Install yq
+      pip:
+        name: yq
+
     - name: Install base dependencies
       ansible.builtin.apt:
         pkg:
@@ -50,6 +56,7 @@
     - name: Install Docker Module for Python
       pip:
         name: docker
+    
 
     - name: Install docker-compose
       ansible.builtin.pip:
