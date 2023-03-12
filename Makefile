@@ -8,7 +8,7 @@ format:
 
 digitalocean: setup
 	packer init digitalocean.pkr.hcl
-	packer build digitalocean.pkr.hcl
+	packer build -only=digitalocean.ubuntu .
 
 vagrant: setup
 	packer init vagrant.pkr.hcl

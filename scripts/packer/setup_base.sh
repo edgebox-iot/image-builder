@@ -1,5 +1,4 @@
-#!/bin/sh
-set -e
+#!/bin/bash -e
 
 welcome() {
     if [ "$*" != "" ] ; then
@@ -27,18 +26,26 @@ install() {
     echo "Installing Docker Compose"
     pip3 -v install docker-compose
     echo "Installing yq"
-    pip3 -v install yq
+    wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+    chmod a+x /usr/local/bin/yq
+    # pip3 -v install yq
+    # Fixing OpenSSL issue
+    sudo rm -rf /usr/lib/python3/dist-packages/OpenSSL
+    sudo pip3 install pyopenssl
+    sudo pip3 install pyopenssl --upgrade
     echo "Installing Go"
     wget https://golang.org/dl/go1.16.5.linux-amd64.tar.gz
     tar -C /usr/local -xzf go1.16.5.linux-amd64.tar.gz
     rm go1.16.5.linux-amd64.tar.gz
     echo "export PATH=\$PATH:/usr/local/go/bin" >> /home/system/.profile
+    source /home/system/.profile
     echo "Setting up components"
     mkdir /home/system/components
     cd /home/system/components
     mv /tmp/edgeboxctl ./edgeboxctl
+    cd edgeboxctl && make build-cloud && cd ..
     cp ./edgeboxctl/edgeboxctl.service /lib/systemd/system/edgeboxctl.service
-    cp ./edgeboxctl/edgeboxctl-linux-amd64 /usr/local/sbin/edgeboxctl
+    cp ./edgeboxctl/bin/edgeboxctl-linux-amd64 /usr/local/sbin/edgeboxctl
     mv /tmp/ws ./ws
     mv /tmp/api ./api
     mv /tmp/apps ./apps
