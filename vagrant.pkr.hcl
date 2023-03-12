@@ -17,6 +17,11 @@ build {
       inline = ["sudo apt-get update && sudo apt-get -y install python3-pip ansible && ansible-galaxy install -r /tmp/requirements.yml"]
   }
 
+  provisioner "file" {
+    source      = "bin/"
+    destination = "/tmp"
+  }
+
   provisioner "ansible-local" {
     playbook_file = "./scripts/ansible/playbook.yml"
   }
