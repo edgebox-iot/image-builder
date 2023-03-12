@@ -57,7 +57,6 @@
       pip:
         name: docker
     
-
     - name: Install docker-compose
       ansible.builtin.pip:
         name: docker-compose
