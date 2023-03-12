@@ -10,5 +10,8 @@ build {
 
   provisioner "ansible" {
     playbook_file = "./scripts/ansible/playbook.yml"
+    ansible_ssh_extra_args = [
+        "-o IdentitiesOnly=yes -o PubkeyAcceptedAlgorithms=+ssh-rsa -o HostkeyAlgorithms=+ssh-rsa"
+    ]
   }
 }
