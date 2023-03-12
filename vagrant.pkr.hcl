@@ -8,10 +8,16 @@ source "vagrant" "ubuntu-2204" {
 build {
   sources = ["source.vagrant.ubuntu-2204"]
 
-  provisioner "ansible" {
+  provisioner "file" {
+    source = "scripts/ansible/requirements.yml"
+    destination = "/tmp/requirements.yml"
+  }
+
+  provisioner "shell" {
+      inline = ["sudo apt-get update && sudo apt-get -y install python3-pip ansible && ansible-galaxy install -r /tmp/requirements.yml"]
+  }
+
+  provisioner "ansible-local" {
     playbook_file = "./scripts/ansible/playbook.yml"
-    ansible_ssh_extra_args = [
-        "-o IdentitiesOnly=yes -o PubkeyAcceptedAlgorithms=+ssh-rsa -o HostkeyAlgorithms=+ssh-rsa"
-    ]
   }
 }
