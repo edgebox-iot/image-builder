@@ -2,6 +2,7 @@
 
 setup:
 	./scripts/make/local_setup.sh
+	ansible-galaxy install -r scripts/ansible/requirements.yml
 
 format: 
 	packer fmt .
@@ -12,7 +13,7 @@ digitalocean: setup
 
 vagrant: setup
 	packer init vagrant.pkr.hcl
-	packer build vagrant.pkr.hcl
+	packer build -only=vagrant.ubuntu-2204 .
 
 all: vagrant digitalocean
 

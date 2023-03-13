@@ -8,13 +8,21 @@ source "vagrant" "ubuntu-2204" {
 build {
   sources = ["source.vagrant.ubuntu-2204"]
 
-  provisioner "shell" {
-    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -S -E bash '{{ .Path }}'"
-    script          = "scripts/packer/virtualbox_init.sh"
+  provisioner "file" {
+    source = "scripts/ansible/requirements.yml"
+    destination = "/tmp/requirements.yml"
   }
 
   provisioner "shell" {
-    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -S -E bash '{{ .Path }}'"
-    script          = "scripts/packer/virtualbox_cleanup.sh"
+      inline = ["sudo apt-get update && sudo apt-get upgrade && sudo apt-get -y install python3-pip ansible && ansible-galaxy install -r /tmp/requirements.yml"]
+  }
+
+  provisioner "file" {
+    source      = "bin/"
+    destination = "/tmp/edgebox/"
+  }
+
+  provisioner "ansible-local" {
+    playbook_file = "./scripts/ansible/playbook.yml"
   }
 }

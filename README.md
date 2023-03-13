@@ -44,3 +44,8 @@ Depending on the image being built, it may require variables that need to be pro
 
 - **DigitalOcean**
   - `digitalocean_api_token` - The API token that can [be obtained in your DigitalOcean account](https://docs.digitalocean.com/reference/api/create-personal-access-token/).
+
+
+# Local tinkering 
+
+Included as a vagrant stack to make testing the provisioning scripts easier.
