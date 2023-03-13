@@ -14,7 +14,7 @@ build {
   }
 
   provisioner "shell" {
-      inline = ["sudo apt-get update && sudo apt-get -y install python3-pip ansible && ansible-galaxy install -r /tmp/requirements.yml"]
+      inline = ["sudo apt-get update && sudo apt-get upgrade && sudo apt-get -y install python3-pip ansible && ansible-galaxy install -r /tmp/requirements.yml"]
   }
 
   provisioner "file" {
