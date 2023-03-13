@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.box = "bento/ubuntu-22.04"
 
-  config.vm.synced_folder "bin/", "/tmp/bin"
+  config.vm.synced_folder "bin/", "/tmp/edgebox"
 
   config.vm.provision "shell", inline: $bootstrap
   config.vm.provision "ansible" do |ansible|

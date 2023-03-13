@@ -1,27 +1,37 @@
 - name: Copy edgeboxctl.service
   ansible.builtin.copy:
-    src: /tmp/bin/edgeboxctl/edgeboxctl.service
+    src: /tmp/edgebox/edgeboxctl/edgeboxctl.service
     dest: /lib/systemd/system/edgeboxctl.service
+    remote_src: true
+
+- name: Build edgeboxctl
+  ansible.builtin.shell: make build
+  args:
+    chdir: /tmp/edgebox/edgeboxctl
 
 - name: Copy edgeboxctl
   ansible.builtin.copy:
-    src: /tmp/bin/edgeboxctl/edgeboxctl-linux-amd64
+    src: /tmp/edgebox/edgeboxctl/bin/edgeboxctl
     dest: /usr/local/sbin/edgeboxctl
+    remote_src: true
 
 - name: Copy ws
   ansible.builtin.copy:
-    src: /tmp/bin/ws
+    src: /tmp/edgebox/ws
     dest: /home/system/components/ws
+    remote_src: true
 
 - name: Copy api
   ansible.builtin.copy:
-    src: /tmp/bin/api
+    src: /tmp/edgebox/api
     dest: /home/system/components/api
+    remote_src: true
 
 - name: Copy apps
   ansible.builtin.copy:
-    src: /tmp/bin/apps
+    src: /tmp/edgebox/apps
     dest: /home/system/components/apps
+    remote_src: true
 
 - name: Create data dir
   ansible.builtin.file:

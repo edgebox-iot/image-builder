@@ -27,6 +27,8 @@
         - libssl-dev
         - python3
         - python3-pip
+        - make
+        - gcc
         - samba
         - samba-common-bin
         - avahi-daemon
@@ -66,5 +68,6 @@
         name: abdennour.golang
       vars:
         golang_version: '1.16'
+
     - name: Setup components
       ansible.builtin.import_tasks: tasks/components.yml

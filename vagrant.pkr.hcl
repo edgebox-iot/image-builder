@@ -19,7 +19,7 @@ build {
 
   provisioner "file" {
     source      = "bin/"
-    destination = "/tmp"
+    destination = "/tmp/edgebox/"
   }
 
   provisioner "ansible-local" {
