@@ -16,7 +16,7 @@ install() {
     sleep 30
     echo "Installing base dependencies"
     apt-get update
-    apt-get install -y -qq vim aptitude nano curl git libffi-dev libssl-dev python3 python3-pip samba samba-common-bin avahi-daemon avahi-utils jq
+    apt-get install -y -qq vim aptitude nano curl git libffi-dev libssl-dev python3 python3-pip samba samba-common-bin avahi-daemon avahi-utils jq restic
     pip3 -V
     echo "Creating system user and setting defined password"
     useradd -m system
